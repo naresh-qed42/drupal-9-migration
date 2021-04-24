@@ -8,11 +8,10 @@ dependencies:
     - field.field.node.article.field_image
     - field.field.node.article.field_minutes
     - field.field.node.article.field_tags
-    - image.style.thumbnail
     - node.type.article
   module:
     - comment
-    - image
+    - media_library
     - path
     - text
 _core:
@@ -45,13 +44,12 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_image:
-    type: image_image
-    weight: 4
-    region: content
+    type: media_library_widget
+    weight: 122
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      media_types: {  }
     third_party_settings: {  }
+    region: content
   field_minutes:
     weight: 121
     settings:
@@ -111,6 +109,11 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 5
