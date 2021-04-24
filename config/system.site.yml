@@ -1,0 +1,14 @@
+uuid: bc71a310-f14b-4802-b52c-d84cc437f8ad
+name: drupal-9-stable
+mail: naresh.bavaskar@qed42.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE

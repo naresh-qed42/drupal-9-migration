@@ -1,0 +1,23 @@
+uuid: a716741c-689f-4832-8f41-a0a19940414f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_minutes
+    - node.type.article
+id: node.article.field_minutes
+field_name: field_minutes
+entity_type: node
+bundle: article
+label: Minutes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: 62eb1cb7-4632-499f-96f5-24c963b99752
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.minutes
+  module:
+    - facets
+  theme:
+    - bartik
+id: minutes
+theme: bartik
+region: content
+weight: -7
+provider: null
+plugin: 'facet_block:minutes'
+settings:
+  id: 'facet_block:minutes'
+  label: Minutes
+  provider: facets
+  label_display: visible
+  block_id: minutes
+visibility: {  }

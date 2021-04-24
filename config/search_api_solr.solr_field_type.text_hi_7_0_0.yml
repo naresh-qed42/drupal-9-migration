@@ -1,0 +1,177 @@
+uuid: edcd00d6-e007-44e9-bf18-56647cbe61bb
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: zI7nl5Ac1tf3F-DtvXxICey5Uvjo0_V5OAS5rc5tndE
+id: text_hi_7_0_0
+label: 'Hindi Text Field'
+minimum_solr_version: 7.0.0
+custom_code: null
+field_type_language_code: hi
+domains: {  }
+field_type:
+  name: text_hi
+  class: solr.TextField
+  positionIncrementGap: 100
+  analyzers:
+    -
+      type: index
+      tokenizer:
+        class: solr.WhitespaceTokenizerFactory
+      filters:
+        -
+          class: solr.LowerCaseFilterFactory
+        -
+          class: solr.StopFilterFactory
+          ignoreCase: true
+          words: stopwords_hi.txt
+        -
+          class: solr.HindiNormalizationFilterFactory
+        -
+          class: solr.HindiStemFilterFactory
+    -
+      type: query
+      tokenizer:
+        class: solr.WhitespaceTokenizerFactory
+      filters:
+        -
+          class: solr.LowerCaseFilterFactory
+        -
+          class: solr.StopFilterFactory
+          ignoreCase: true
+          words: stopwords_hi.txt
+        -
+          class: solr.SynonymGraphFilterFactory
+          synonyms: synonyms_hi.txt
+          expand: true
+          ignoreCase: true
+        -
+          class: solr.HindiNormalizationFilterFactory
+        -
+          class: solr.HindiStemFilterFactory
+unstemmed_field_type:
+  name: text_unstemmed_hi
+  class: solr.TextField
+  positionIncrementGap: 100
+  analyzers:
+    -
+      type: index
+      tokenizer:
+        class: solr.WhitespaceTokenizerFactory
+      filters:
+        -
+          class: solr.LowerCaseFilterFactory
+        -
+          class: solr.StopFilterFactory
+          ignoreCase: true
+          words: stopwords_hi.txt
+        -
+          class: solr.HindiNormalizationFilterFactory
+    -
+      type: query
+      tokenizer:
+        class: solr.WhitespaceTokenizerFactory
+      filters:
+        -
+          class: solr.LowerCaseFilterFactory
+        -
+          class: solr.StopFilterFactory
+          ignoreCase: true
+          words: stopwords_hi.txt
+        -
+          class: solr.SynonymGraphFilterFactory
+          synonyms: synonyms_hi.txt
+          expand: true
+          ignoreCase: true
+        -
+          class: solr.HindiNormalizationFilterFactory
+spellcheck_field_type: null
+collated_field_type:
+  name: collated_hi
+  class: solr.ICUCollationField
+  locale: hi
+  strength: primary
+  caseLevel: false
+solr_configs:
+  searchComponents:
+    -
+      name: spellcheck
+      class: solr.SpellCheckComponent
+      lst:
+        -
+          name: spellchecker
+          str:
+            -
+              name: name
+              VALUE: hi
+            -
+              name: field
+              VALUE: spellcheck_hi
+            -
+              name: classname
+              VALUE: solr.DirectSolrSpellChecker
+            -
+              name: distanceMeasure
+              VALUE: internal
+            -
+              name: accuracy
+              VALUE: '0.5'
+            -
+              name: maxEdits
+              VALUE: '2'
+            -
+              name: minPrefix
+              VALUE: '1'
+            -
+              name: maxInspections
+              VALUE: '5'
+            -
+              name: minQueryLength
+              VALUE: '4'
+            -
+              name: maxQueryFrequency
+              VALUE: '0.01'
+            -
+              name: thresholdTokenFrequency
+              VALUE: '.01'
+            -
+              name: onlyMorePopular
+              VALUE: 'true'
+    -
+      name: suggest
+      class: solr.SuggestComponent
+      lst:
+        -
+          name: suggester
+          str:
+            -
+              name: name
+              VALUE: hi
+            -
+              name: lookupImpl
+              VALUE: AnalyzingInfixLookupFactory
+            -
+              name: dictionaryImpl
+              VALUE: DocumentDictionaryFactory
+            -
+              name: field
+              VALUE: twm_suggest
+            -
+              name: suggestAnalyzerFieldType
+              VALUE: text_hi
+            -
+              name: contextField
+              VALUE: sm_context_tags
+            -
+              name: buildOnCommit
+              VALUE: 'true'
+            -
+              name: buildOnStartup
+              VALUE: 'false'
+text_files:
+  stopwords: "अंदर\nअत\nअपना\nअपनी\nअपने\nअभी\nआदि\nआप\nइत्यादि\nइन\nइनका\nइन्हीं\nइन्हें\nइन्हों\nइस\nइसका\nइसकी\nइसके\nइसमें\nइसी\nइसे\nउन\nउनका\nउनकी\nउनके\nउनको\nउन्हीं\nउन्हें\nउन्हों\nउस\nउसके\nउसी\nउसे\nएक\nएवं\nएस\nऐसे\nऔर\nकई\nकर\nकरता\nकरते\nकरना\nकरने\nकरें\nकहते\nकहा\nका\nकाफ़ी\nकि\nकितना\nकिन्हें\nकिन्हों\nकिया\nकिर\nकिस\nकिसी\nकिसे\nकी\nकुछ\nकुल\nके\nको\nकोई\nकौन\nकौनसा\nगया\nघर\nजब\nजहाँ\nजा\nजितना\nजिन\nजिन्हें\nजिन्हों\nजिस\nजिसे\nजीधर\nजैसा\nजैसे\nजो\nतक\nतब\nतरह\nतिन\nतिन्हें\nतिन्हों\nतिस\nतिसे\nतो\nथा\nथी\nथे\nदबारा\nदिया\nदुसरा\nदूसरे\nदो\nद्वारा\nन\nनहीं\nना\nनिहायत\nनीचे\nने\nपर\nपर\nपहले\nपूरा\nपे\nफिर\nबनी\nबही\nबहुत\nबाद\nबाला\nबिलकुल\nभी\nभीतर\nमगर\nमानो\nमे\nमें\nयदि\nयह\nयहाँ\nयही\nया\nयिह\nये\nरखें\nरहा\nरहे\nऱ्वासा\nलिए\nलिये\nलेकिन\nव\nवर्ग\nवह\nवह\nवहाँ\nवहीं\nवाले\nवुह\nवे\nवग़ैरह\nसंग\nसकता\nसकते\nसबसे\nसभी\nसाथ\nसाबुत\nसाभ\nसारा\nसे\nसो\nही\nहुआ\nहुई\nहुए\nहै\nहैं\nहो\nहोता\nहोती\nहोते\nहोना\nहोने\nअपनि\nजेसे\nहोति\nसभि\nतिंहों\nइंहों\nदवारा\nइसि\nकिंहें\nथि\nउंहों\nओर\nजिंहें\nवहिं\nअभि\nबनि\nहि\nउंहिं\nउंहें\nहें\nवगेरह\nएसे\nरवासा\nकोन\nनिचे\nकाफि\nउसि\nपुरा\nभितर\nहे\nबहि\nवहां\nकोइ\nयहां\nजिंहों\nतिंहें\nकिसि\nकइ\nयहि\nइंहिं\nजिधर\nइंहें\nअदि\nइतयादि\nहुइ\nकोनसा\nइसकि\nदुसरे\nजहां\nअप\nकिंहों\nउनकि\nभि\nवरग\nहुअ\nजेसा\nनहिं\n"
+  synonyms: "drupal, durpal\n"
+  nouns: "\n"
+  protwords: "\n"
+  accents: ''
